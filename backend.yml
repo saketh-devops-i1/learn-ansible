@@ -2,9 +2,15 @@
   hosts: all
   become: true
   tasks:
-   - name: Install nodejs version 20
+   - name: Disable default NodeJS Version Module
+     ansible.builtin.shell: dnf module disable nodejs -y
+
+   - name: Enable NodeJS module for V20
+     ansible.builtin.shell: dnf module enable nodejs:20 -y
+
+   - name: Install nodejs
      ansible.builtin.dnf:
-       name: nodejs >= 20
+       name: nodejs
        state: latest
 
    - name: Add user expense
