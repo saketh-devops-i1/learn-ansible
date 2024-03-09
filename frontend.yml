@@ -18,7 +18,7 @@
         state: absent
 
    - name: Extract frontend Content
-      ansible.builtin.unarchive:
+     ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
         dest: /usr/share/nginx/html  
 
