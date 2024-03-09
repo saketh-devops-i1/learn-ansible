@@ -37,6 +37,11 @@
        src: backend.service
        dest: /etc/systemd/system/backend.service
 
+   - name: Install MySql Client
+     ansible.builtin.dnf:
+       name: mysql
+       state: latest
+
    - name: Install Python MySQL Client
      ansible.builtin.pip:
        name:
@@ -48,7 +53,7 @@
      community.mysql.mysql_db:
        state: import
        name: all
-       target: /app/schema/backend.sql
+       target: /app/schema/backend.sql 
        login_user: root
        login_password: ExpenseApp@1
        login_host: mysql-dev.devops-saketh.online
