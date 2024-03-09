@@ -1,0 +1,17 @@
+- name: Frontend Setup
+  hosts: all
+  tasks:
+   - name: Install nginx
+     ansible.builtin.dnf:
+       name: nginx
+       state: latest
+
+   - name: Remove Default Content
+     ansible.builtin.file:
+        path: /usr/share/nginx/html/*
+        state: absent
+
+   - name: Extract frontend Content
+      ansible.builtin.unarchive:
+        src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
+        dest: /usr/share/nginx/html
