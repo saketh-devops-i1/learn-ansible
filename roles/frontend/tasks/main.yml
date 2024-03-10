@@ -8,8 +8,10 @@
     state: started
     name: nginx
 
-- ansible.builtin.import_role:
-  name: app-pre-req
+- name: Import App pre-requiste 
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-pre-req
 
 - name: Restart nginx
   ansible.builtin.systemd_service:

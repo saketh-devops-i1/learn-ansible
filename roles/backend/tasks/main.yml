@@ -13,8 +13,10 @@
   ansible.builtin.user:
     name: expense
 
-- ansible.builtin.import_role:
-  name: app-pre-req
+- name: Import App pre-requiste 
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-pre-req
 
 - name: Download dependencies
   community.general.npm:
