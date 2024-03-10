@@ -13,22 +13,6 @@
   ansible.builtin.user:
     name: expense
 
-- name: Remove Default Content
-  ansible.builtin.file:
-    path: /app
-    state: absent
-
-- name: Add directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
-
-- name: Extract backend Content
-  ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
-    dest: /app  
-    remote_src: yes
-
 - name: Download dependencies
   community.general.npm:
     path: /app

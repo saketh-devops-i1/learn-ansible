@@ -8,21 +8,6 @@
     state: started
     name: nginx
 
-- name: Copy file
-  ansible.builtin.copy:
-    src: expense.conf
-    dest: /etc/nginx/default.d/expense.conf
-
-- name: Remove Default Content
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
-
-- name: Add directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: directory
-
 - name: Extract frontend Content
   ansible.builtin.unarchive:
     src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
