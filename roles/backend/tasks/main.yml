@@ -13,6 +13,9 @@
   ansible.builtin.user:
     name: expense
 
+- ansible.builtin.import_role:
+  name: app-pre-req
+
 - name: Download dependencies
   community.general.npm:
     path: /app

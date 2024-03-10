@@ -8,11 +8,8 @@
     state: started
     name: nginx
 
-- name: Extract frontend Content
-  ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-    dest: /usr/share/nginx/html  
-    remote_src: yes
+- ansible.builtin.import_role:
+  name: app-pre-req
 
 - name: Restart nginx
   ansible.builtin.systemd_service:
