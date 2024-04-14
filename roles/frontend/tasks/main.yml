@@ -3,11 +3,6 @@
     name: nginx
     state: latest
 
-- name: Start nginx
-  ansible.builtin.systemd_service:
-    state: started
-    name: nginx
-
 - name: Copy Expense Nginx Configuration
   ansible.builtin.template:
     src: expense.conf
@@ -18,8 +13,7 @@
     name: common
     tasks_from: app-pre-req
 
-- name: Restart nginx
+- name: Start nginx
   ansible.builtin.systemd_service:
-    state: restarted
-    enabled: yes
-    name: nginx 
+    state: started
+    name: nginx
