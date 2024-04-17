@@ -3,5 +3,5 @@
 
 - name: Install Node Exporter
   ansible.builtin.import_role:
-    name: prometheus
+    name: Prometheus
     tasks_from: node_exporter
